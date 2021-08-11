@@ -1,5 +1,5 @@
-widthBlind = 75;
-heightBlind = 150;
+widthBlind = prompt('Введите ширину роллеты');
+heightBlind = prompt('Введите высоту роллеты');
 plasticBlinds = 200;
 textileBlinds = 250;
 aluminumBlinds = 350;
@@ -16,9 +16,9 @@ materialSelection = parseInt(
   )
 );
 squareBlinds = (widthBlind / 100) * (heightBlind / 100);
-pricePlasticBlinds = parseFloat(plasticBlinds + 200 * 0.125);
-priceTextileBlinds = parseFloat(textileBlinds + 250 * 0.125);
-priceAluminumBlinds = parseFloat(aluminumBlinds + 350 * 0.125);
+pricePlasticBlinds = parseFloat(plasticBlinds * squareBlinds);
+priceTextileBlinds = parseFloat(textileBlinds * squareBlinds);
+priceAluminumBlinds = parseFloat(aluminumBlinds * squareBlinds);
 if (materialSelection == 1) {
   alert(
     'Цена за кв.м : 200.00 грн' +

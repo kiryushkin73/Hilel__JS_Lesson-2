@@ -15,11 +15,13 @@ let yearExaminationSecond = year % 100 == 0;
 let yearExaminationThird = year % 400 != 0;
 let leapYear =
   yearExaminationFirst || (yearExaminationSecond && yearExaminationThird);
-if (day == 29 && month == 2 && leapYear) {
+if (day >= 29 && month == 2 && leapYear) {
   checkDate = day + '.' + month + '.' + year + ' Такой дата не существует   ';
-} else if (day == 29 && month == 2 && !leapYear) {
+} else if (day <= 29 && month == 2 && !leapYear) {
   checkDate = day + '.' + month + '.' + year + ' Такая  дата существует   ';
-}
+} else
+  checkDate = day + '.' + month + '.' + year + ' Такой дата не существует   ';
+
 if (day > 31 || day == 0 || day == ' ' || day === null) {
   //  (checkDate =
   //     day + ' ' + month + ' ' + year + ' Такая  дата не существует   ')
