@@ -1,4 +1,15 @@
-let enteredCargoWeight = parseFloat(prompt('Введите вес груза в тоннах', 0.2));
+let enteredCargoWeight = parseFloat(
+  prompt(
+    'Введите вес груза в тоннах' +
+      '\nдо 1т - 25л/100км' +
+      '\nдо 2т - 30л/100км' +
+      '\nдо 3т - 35л/100км' +
+      '\nдо 4т - 42л/100км' +
+      '\nдо 5т - 50л/100км' +
+      '\nболее 5т - не взлетит',
+    0.1
+  )
+);
 // Вес груза
 let enteredFuelInitially = parseInt(
   prompt('Введите начальное количество топлива в баке в литрах')
@@ -57,9 +68,6 @@ if (distanseCB >= 0 && distanseAC >= distanseCB && maxFlight >= distanseAC) {
       ' литров топлива для полёта до точки (C).'
   );
 }
-if (
-  enteredVolumeTank <
-  distanseCB + (enteredVolumeTank - enteredFuelInitially)
-) {
+if (distanseCB > enteredVolumeTank && distanseAC < distanseCB) {
   alert('Дозаправка не помещаеться в бак');
 }
