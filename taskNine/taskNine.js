@@ -37,24 +37,17 @@ if (enteredCargoWeight > 5) {
   fuelConsumption = 50;
   maxFlight = (enteredFuelInitially / fuelConsumption) * 100;
 }
-if (maxFlight <= distanseAC) {
+if (maxFlight < distanseAC) {
   alert(' Полет не возможен!  Топлива не хватит до точки (B) ! ');
-} else if (maxFlight > distanseAC) {
+} else if (maxFlight >= distanseAC) {
   distanseAC = maxFlight - distanseAC;
 }
-if (maxFlight <= distanseCB) {
+if (distanseAC < distanseCB && maxFlight >= distanseAC) {
   alert(' Полет не возможен!Топлива не хватит до точки (С) ! ');
 }
-if (maxFlight >= distanseCB) {
-} else if (
-  distanseCB + (enteredVolumeTank - enteredFuelInitially) >
-  enteredVolumeTank
-) {
-  alert('Дозаправка не помещаеться в бак');
-}
-if (distanseCB <= 0) {
+if (distanseCB >= 0 && distanseAC >= distanseCB && maxFlight >= distanseAC) {
   alert(' Нет необходимости доливать топливо, в баке достаточно топлива. ');
-} else if (distanseCB >= 0) {
+} else if (distanseCB > 0 && distanseAC <= distanseCB) {
   parseFloat(
     (distanseCB = ((distanseCB - distanseAC) * fuelConsumption) / 100)
   );
@@ -63,4 +56,10 @@ if (distanseCB <= 0) {
       distanseCB +
       ' литров топлива для полёта до точки (C).'
   );
+}
+if (
+  enteredVolumeTank <
+  distanseCB + (enteredVolumeTank - enteredFuelInitially)
+) {
+  alert('Дозаправка не помещаеться в бак');
 }
